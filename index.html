@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zaika Express | Food delivery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#store" data-go="store"><span class="logo-mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M9 7c0-2 2-2 2-4M14 7c0-2 2-2 2-4"/></svg></span>Zaika Express</a>
+    <nav class="nav" aria-label="Sections"><a href="#store" data-go="store">Order food</a><a href="#lab" data-go="lab">BA Lab</a></nav>
+    <label class="loc">Deliver to
+      <select id="area"><option>Model Town</option><option>Civil Lines</option><option>Sector 17</option><option>Old Bazaar</option></select>
+    </label>
+    <button class="cartbtn" data-act="cart" type="button" aria-label="Open cart">Cart <b id="cartCount">0</b><span id="cartTotal" class="num"></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Fresh. Hot. At your door.</p>
+      <h1>Hungry? Dinner lands in 30 minutes.</h1>
+      <p class="lede">Biryani, dosa, pizza, momos and mithai from kitchens near you. Free delivery on orders above ₹499.</p>
+      <form class="search" id="searchForm" role="search">
+        <input id="q" type="search" placeholder="Search biryani, dosa, pizza or a kitchen" aria-label="Search food or kitchens" autocomplete="off">
+        <button type="submit">Find food</button>
+      </form>
+      <p class="hero-facts"><span>12 kitchens</span><span>60 dishes</span><span>Pay by UPI, card or cash</span></p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="tile" style="background:#FFB11F">🍛</div>
+      <div class="tile" style="background:#12915F">🥗</div>
+      <div class="tile" style="background:#0E96AD">🥟</div>
+      <div class="tile" style="background:#FF7AA8">🍰</div>
+      <div class="tile" style="background:#FF5C2E">🍕</div>
+      <div class="tile" style="background:#6B5BD6">🍜</div>
+    </div>
+  </div>
+</section>
+
+<main>
+<section id="store" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Offers for you</h2><p>Tap a code to copy it, then paste it in your cart.</p></div>
+    <div class="offers" id="offers"></div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>What are you craving?</h2></div>
+    <div class="chips" id="chips" role="group" aria-label="Cuisine"></div>
+    <div class="filters" id="filters">
+      <button class="tog" type="button" data-f="veg" aria-pressed="false">Pure veg</button>
+      <button class="tog" type="button" data-f="r4" aria-pressed="false">Rating 4.0+</button>
+      <button class="tog" type="button" data-f="fast" aria-pressed="false">Under 30 min</button>
+      <button class="tog" type="button" data-f="offers" aria-pressed="false">Has offer</button>
+      <button class="tog" type="button" data-f="fav" aria-pressed="false">Favourites</button>
+      <select id="sort" aria-label="Sort kitchens">
+        <option value="rel">Sort: Relevance</option><option value="rating">Rating: high to low</option>
+        <option value="time">Delivery time: fastest</option><option value="cost">Cost: low to high</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="lab" class="block lab">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Business Analyst Lab</h2></div>
+      <p>How a BA would plan, measure and improve Zaika Express. The figures below are computed in this page from 640 sample orders over 28 days (16 Sep to 13 Oct 2026). They are demo data, not real sales.</p>
+    </div>
+    <div class="lab-intro" id="tools"></div>
+  </div>
+</section>
+
+<section id="dashboard" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Performance dashboard</h2><p>Power BI and Tableau style view: revenue, funnel, retention and delivery.</p></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="dash">
+      <div class="panel c8"><h3>Daily delivered revenue</h3><p class="sub">GMV in ₹, one point per day</p><div class="scroll-x" id="gmv"></div></div>
+      <div class="panel c4"><h3>Revenue by cuisine</h3><p class="sub">Delivered orders, ₹</p><div id="cuisBars"></div></div>
+      <div class="panel c5"><h3>Conversion funnel</h3><p class="sub">Sample web analytics, last 28 days</p><div id="funnel" class="funnel"></div></div>
+      <div class="panel c7"><h3>Customer retention by first-order week</h3><p class="sub">Share of each cohort that ordered again N weeks later</p><div class="scroll-x" id="cohort"></div></div>
+      <div class="panel c12"><h3>Delivery time distribution</h3><p class="sub">Minutes from order to door, delivered orders. Target is 35 minutes or less.</p><div class="hist" id="hist"></div><div class="legend"><span>On time</span><span class="l2">Late</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="sql" class="block lab">
+  <div class="wrap">
+    <div class="sec-head"><h2>SQL console</h2><p>Four questions the business asks every week. Pick one to see the query and its result.</p></div>
+    <div class="pillrow" id="qpills" role="group" aria-label="Queries"></div>
+    <pre class="sql" id="qtext"></pre>
+    <div class="res" id="qres"></div>
+  </div>
+</section>
+
+<section id="excel" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Excel pivot</h2><p>Weekly delivered revenue by cuisine. Click any cell to see the formula behind it.</p></div>
+    <div class="xl"><div class="fbar"><span class="nb" id="nameBox">B2</span><span>fx</span><span class="ft" id="fText"></span></div><div class="scroll-x" id="xl"></div></div>
+  </div>
+</section>
+
+<section id="req" class="block lab">
+  <div class="wrap">
+    <div class="sec-head"><h2>Requirements</h2><p>User stories with MoSCoW priority and acceptance criteria, as they would sit in Jira or Confluence.</p></div>
+    <div class="pillrow" id="rpills" role="group" aria-label="Priority filter"></div>
+    <div class="stories" id="stories"></div>
+  </div>
+</section>
+
+<section id="process" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Process and data model</h2><p>BPMN-style flow of one order, and the entity relationship diagram that the SQL queries run on.</p></div>
+    <div class="diagrams">
+      <div class="panel"><h3>Order lifecycle</h3><p class="sub">Browse to delivery</p>
+<pre class="mermaid">
+flowchart LR
+  A[Customer browses] --> B[Adds to cart]
+  B --> C{Coupon valid?}
+  C -- Yes --> D[Apply discount]
+  C -- No --> E[Pay full price]
+  D --> F[Pay]
+  E --> F
+  F --> G{Payment ok?}
+  G -- No --> B
+  G -- Yes --> H[Restaurant accepts]
+  H --> I[Rider assigned]
+  I --> J[Out for delivery]
+  J --> K[Delivered and rated]
+</pre></div>
+      <div class="panel"><h3>Data model</h3><p class="sub">Tables behind the dashboard</p>
+<pre class="mermaid">
+erDiagram
+  CUSTOMER ||--o{ ORDERS : places
+  RESTAURANT ||--o{ ORDERS : fulfils
+  RIDER ||--o{ ORDERS : delivers
+  ORDERS ||--|{ ORDER_ITEM : contains
+  MENU_ITEM ||--o{ ORDER_ITEM : listed_as
+  ORDERS {
+    int order_id PK
+    int customer_id FK
+    int restaurant_id FK
+    decimal amount
+    int delivery_min
+    string status
+  }
+  CUSTOMER {
+    int customer_id PK
+    string name
+    date joined_on
+  }
+</pre></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">Zaika Express is a demo. No real orders, payments or deliveries happen here. Dish art uses emoji.</footer>
+
+<div class="scrim" id="scrim" hidden data-act="close"></div>
+<section class="layer sheet" id="menuLayer" hidden role="dialog" aria-modal="true" aria-label="Menu"></section>
+<aside class="layer drawer" id="cartLayer" hidden role="dialog" aria-modal="true" aria-label="Your cart"></aside>
+<section class="layer sheet" id="checkoutLayer" hidden role="dialog" aria-modal="true" aria-label="Checkout"></section>
+<section class="layer sheet" id="trackLayer" hidden role="dialog" aria-modal="true" aria-label="Order tracking"></section>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'default'});</script>
+<script src="js/app.js"></script>
+</body>
+</html>
